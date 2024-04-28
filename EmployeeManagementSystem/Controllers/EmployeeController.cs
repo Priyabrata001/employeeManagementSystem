@@ -15,6 +15,10 @@ namespace EmployeeManagementSystem.Controllers
         {
             _repo = repo;
         }
+
+
+
+
         [HttpGet]
         public async Task<IActionResult> GetAllEmployee()
         {
@@ -32,6 +36,27 @@ namespace EmployeeManagementSystem.Controllers
             }
             return Ok(result);
         }
+
+        [HttpGet("count")]
+        public async Task<IActionResult> GetEmployeeCount()
+        {
+            var employeeCount = await _repo.GetCount();
+            if (employeeCount == null)
+            {
+                return NotFound("Employee List is empty");
+            }
+            return Ok(employeeCount);
+        }
+
+        [HttpGet("salary")]
+        public async Task<IActionResult> GetTotalSalary()
+        {
+            var sum = await _repo.GetTotalSalary();
+
+            return Ok(sum);
+        }
+        
+
         [HttpPost]
         public async Task<IActionResult> InsertEmployee(Employee employee)
         {
@@ -65,6 +90,7 @@ namespace EmployeeManagementSystem.Controllers
             return Ok(result);
 
         }
+       
 
     }
 }

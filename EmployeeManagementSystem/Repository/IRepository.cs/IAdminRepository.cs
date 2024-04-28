@@ -1,4 +1,5 @@
 ﻿using EmployeeManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementSystem.Repository.IRepository.cs
 {
@@ -10,5 +11,6 @@ namespace EmployeeManagementSystem.Repository.IRepository.cs
         Task<Admin> Update(int id, Admin admin);
         Task<Admin> Delete(int id);
         string Login(string adminEmail, string password);
+        Task<int> GetCount();
     }
 }

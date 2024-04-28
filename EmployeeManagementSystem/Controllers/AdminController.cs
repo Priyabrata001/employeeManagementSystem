@@ -34,6 +34,18 @@ namespace EmployeeManagementSystem.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("count")]
+        public async Task<IActionResult> GetAdminCount()
+        {
+            var employeeCount = await _repo.GetCount();
+            if (employeeCount == null)
+            {
+                return NotFound("Employee List is empty");
+            }
+            return Ok(employeeCount);
+        }
+
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> InsertAdmin(Admin admin)

@@ -9,6 +9,9 @@ namespace EmployeeManagementSystem.Repository.IRepository.cs
         Task<Employee> Insert(Employee employee);
         Task<Employee> Update(int id, Employee employee);
         Task<Employee> Delete(int id);
-        
+        Task<int> GetCount();
+        Task<long> GetTotalSalary();
+
+
     }
 }

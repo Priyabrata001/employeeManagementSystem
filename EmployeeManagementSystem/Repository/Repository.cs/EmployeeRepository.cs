@@ -68,5 +68,18 @@ namespace EmployeeManagementSystem.Repository.Repository.cs
 
         return result;
     }
-}
+
+        public async Task<int> GetCount()
+        {
+            var employees = await _context.Employee.ToListAsync();
+            return employees.Count;
+        }
+
+        public async Task<long> GetTotalSalary()
+        {
+            var employees = await _context.Employee.ToListAsync();
+            long sal = employees.Sum(employee => employee.Salary);
+            return sal;
+        }
+    }
 }

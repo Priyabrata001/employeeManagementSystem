@@ -96,5 +96,11 @@ namespace EmployeeManagementSystem.Repository.Repository.cs
             }
             return null;
         }
+
+        public async Task<int> GetCount()
+        {
+            var admin = await _context.Admin.ToListAsync();
+            return admin.Count;
+        }
     }
 }
